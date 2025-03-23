@@ -43,6 +43,12 @@ function setTheme(theme) {
     } else {
         icon.className = 'fas fa-sun';
     }
+
+    // Update theme name display
+    const themeNameElement = document.getElementById('theme-name');
+    if (themeNameElement) {
+        themeNameElement.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
+    }
 }
 
 // Function to initialize theme
