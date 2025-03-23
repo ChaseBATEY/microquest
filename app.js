@@ -27,6 +27,51 @@ const elements = {
     themesGrid: document.getElementById('themes-grid'),
 };
 
+// Theme Management
+const themeToggle = document.getElementById('theme-toggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Function to set theme
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+    
+    // Update toggle button icon
+    const icon = themeToggle.querySelector('i');
+    icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+}
+
+// Function to initialize theme
+function initializeTheme() {
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    
+    if (savedTheme) {
+        // If user has previously set a theme, use that
+        setTheme(savedTheme);
+    } else {
+        // Otherwise, use system preference
+        setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+    }
+}
+
+// Theme toggle event listener
+themeToggle.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+});
+
+// Listen for system theme changes
+prefersDarkScheme.addEventListener('change', (e) => {
+    // Only update if user hasn't set a preference
+    if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+    }
+});
+
+// Initialize theme when the page loads
+initializeTheme();
+
 // Initialize app
 function initApp() {
     loadStateFromStorage();
