@@ -467,6 +467,20 @@ footer {
     transition: transform 0.3s ease;
 }
 
+/* Add rotation animation for theme toggle */
+.theme-toggle.rotating i {
+    animation: rotate360 0.5s ease-in-out;
+}
+
+@keyframes rotate360 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* Dark Mode Styles */
 [data-theme="dark"] {
     --light: #2a2a2a;

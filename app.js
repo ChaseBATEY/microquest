@@ -58,6 +58,15 @@ function initializeTheme() {
 // Theme toggle event listener
 themeToggle.addEventListener('click', () => {
     const currentTheme = document.documentElement.getAttribute('data-theme');
+    
+    // Add rotation animation
+    themeToggle.classList.add('rotating');
+    
+    // Remove rotation class after animation completes
+    setTimeout(() => {
+        themeToggle.classList.remove('rotating');
+    }, 500);
+    
     setTheme(currentTheme === 'dark' ? 'light' : 'dark');
 });
 
