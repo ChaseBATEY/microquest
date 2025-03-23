@@ -3,6 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* Remove tap highlight on mobile */
 }
 
 :root {
@@ -119,6 +120,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     margin-bottom: 30px;
+    overscroll-behavior: contain;
 }
 
 .theme-badge {
@@ -143,6 +145,7 @@ h2 {
     position: relative;
     box-shadow: 0 8px 15px var(--shadow);
     border: 2px solid var(--primary-light);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .quest-card::before {
@@ -285,24 +288,131 @@ footer {
 /* Media Queries */
 @media (max-width: 480px) {
     body {
-        padding: 0 10px;
+        padding: 0 15px;
     }
-    
+
+    .app-container {
+        padding: 15px 0;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+    }
+
     .quest-card {
-        padding: 20px 15px;
+        padding: 20px;
+        margin-bottom: 15px;
     }
-    
+
     #quest-text {
         font-size: 1.1rem;
+        line-height: 1.4;
+        margin-bottom: 15px;
     }
-    
+
     .btn {
-        padding: 8px 15px;
-        font-size: 0.9rem;
+        padding: 12px 20px; /* Larger touch targets */
+        font-size: 1rem;
+        min-height: 44px; /* Minimum touch target size */
     }
-    
+
     .quest-buttons {
         flex-direction: column;
+        gap: 8px;
+    }
+
+    .quest-buttons button {
+        width: 100%;
+    }
+
+    #new-quest {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .themes-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .theme-item {
+        padding: 12px 8px;
+    }
+
+    .theme-item i {
+        font-size: 1.5rem;
+    }
+
+    /* Add touch feedback */
+    .btn:active,
+    .theme-item:active {
+        transform: scale(0.98);
+    }
+
+    /* Improve scrolling */
+    .app-container {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Add safe area insets for modern mobile devices */
+    @supports (padding: max(0px)) {
+        body {
+            padding-left: max(15px, env(safe-area-inset-left));
+            padding-right: max(15px, env(safe-area-inset-right));
+        }
+    }
+}
+
+/* Add smooth transitions for all interactive elements */
+.btn,
+.theme-item,
+.quest-card {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Improve touch feedback */
+.btn:active,
+.theme-item:active {
+    transform: scale(0.98);
+}
+
+/* Add pull-to-refresh visual feedback */
+.quest-container {
+    overscroll-behavior: contain;
+}
+
+/* Optimize for landscape mode */
+@media (max-height: 480px) and (orientation: landscape) {
+    .app-container {
+        padding: 10px 0;
+    }
+
+    .quest-card {
+        padding: 15px;
+    }
+
+    #quest-text {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .stats-container,
+    .themes-container {
+        margin-bottom: 15px;
+    }
+
+    .themes-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
