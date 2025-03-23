@@ -334,12 +334,24 @@ document.head.appendChild(style);
 // Add service worker registration for PWA support
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/service-worker.js')
+        // Get the base path for GitHub Pages
+        const basePath = window.location.pathname.includes('/MicroQuest') ? '/MicroQuest' : '';
+        
+        navigator.serviceWorker.register(`${basePath}/service-worker.js`)
             .then(registration => {
                 console.log('ServiceWorker registration successful');
             })
             .catch(error => {
                 console.log('ServiceWorker registration failed:', error);
+                // Fallback for when service worker fails
+                if (!localStorage.getItem('theme')) {
+                    setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+                }
             });
     });
+}
+
+// Add fallback theme initialization
+if (!localStorage.getItem('theme')) {
+    setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
 } 
