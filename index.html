@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MicroQuest - The Tiny Adventure Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <h1>MicroQuest</h1>
+            <p class="subtitle">The Tiny Adventure Generator</p>
+        </header>
+
+        <main>
+            <div class="quest-container">
+                <div class="theme-badge" id="current-theme">
+                    <i class="fas fa-hat-wizard"></i>
+                    <span id="theme-name">Wizard</span>
+                </div>
+                <div class="quest-card">
+                    <p id="quest-text">Loading your quest...</p>
+                    <div class="quest-buttons">
+                        <button id="quest-completed" class="btn btn-success">
+                            <i class="fas fa-check"></i> Completed
+                        </button>
+                        <button id="quest-failed" class="btn btn-danger">
+                            <i class="fas fa-times"></i> Failed
+                        </button>
+                    </div>
+                </div>
+                <button id="new-quest" class="btn btn-primary">
+                    <i class="fas fa-dice"></i> New Quest
+                </button>
+            </div>
+
+            <div class="stats-container">
+                <h2>Your Adventure Log</h2>
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <i class="fas fa-trophy"></i>
+                        <span>Completed: </span>
+                        <span id="completed-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-skull"></i>
+                        <span>Failed: </span>
+                        <span id="failed-count">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-star"></i>
+                        <span>Themes Unlocked: </span>
+                        <span id="themes-unlocked">1/5</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="themes-container">
+                <h2>Unlocked Themes</h2>
+                <div class="themes-grid" id="themes-grid">
+                    <!-- Themes will be populated here by JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>MicroQuest &copy; 2023 - All data stored locally</p>
+        </footer>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html> 
