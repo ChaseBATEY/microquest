@@ -150,54 +150,49 @@ h2 {
 }
 
 /* Theme-specific quest card colors */
-[data-quest-theme="explorer"] .quest-card {
+.quest-container[data-quest-theme="explorer"] .quest-card {
     background-color: rgba(52, 152, 219, 0.1);
     border-color: #3498db;
 }
 
-[data-quest-theme="wizard"] .quest-card {
+.quest-container[data-quest-theme="wizard"] .quest-card {
     background-color: rgba(155, 89, 182, 0.1);
     border-color: #9b59b6;
 }
 
-[data-quest-theme="warrior"] .quest-card {
+.quest-container[data-quest-theme="warrior"] .quest-card {
     background-color: rgba(231, 76, 60, 0.1);
     border-color: #e74c3c;
 }
 
-[data-quest-theme="trickster"] .quest-card {
+.quest-container[data-quest-theme="trickster"] .quest-card {
     background-color: rgba(243, 156, 18, 0.1);
     border-color: #f39c12;
 }
 
-[data-quest-theme="bard"] .quest-card {
+.quest-container[data-quest-theme="bard"] .quest-card {
     background-color: rgba(39, 174, 96, 0.1);
     border-color: #27ae60;
 }
 
 /* Dark mode adjustments */
-[data-theme="dark"] .quest-card {
-    background-color: rgba(0, 0, 0, 0.3);
-    border-color: var(--primary-light);
-}
-
-[data-theme="dark"][data-quest-theme="explorer"] .quest-card {
+[data-theme="dark"] .quest-container[data-quest-theme="explorer"] .quest-card {
     background-color: rgba(52, 152, 219, 0.15);
 }
 
-[data-theme="dark"][data-quest-theme="wizard"] .quest-card {
+[data-theme="dark"] .quest-container[data-quest-theme="wizard"] .quest-card {
     background-color: rgba(155, 89, 182, 0.15);
 }
 
-[data-theme="dark"][data-quest-theme="warrior"] .quest-card {
+[data-theme="dark"] .quest-container[data-quest-theme="warrior"] .quest-card {
     background-color: rgba(231, 76, 60, 0.15);
 }
 
-[data-theme="dark"][data-quest-theme="trickster"] .quest-card {
+[data-theme="dark"] .quest-container[data-quest-theme="trickster"] .quest-card {
     background-color: rgba(243, 156, 18, 0.15);
 }
 
-[data-theme="dark"][data-quest-theme="bard"] .quest-card {
+[data-theme="dark"] .quest-container[data-quest-theme="bard"] .quest-card {
     background-color: rgba(39, 174, 96, 0.15);
 }
 
