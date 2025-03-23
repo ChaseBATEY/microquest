@@ -121,6 +121,7 @@ h2 {
     align-items: center;
     margin-bottom: 30px;
     overscroll-behavior: contain;
+    width: 100%;
 }
 
 .theme-badge {
@@ -171,16 +172,20 @@ h2 {
 
 .quest-buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     gap: 10px;
+    width: 100%;
 }
 
 .quest-buttons button {
     flex: 1;
+    max-width: 200px; /* Limit button width on larger screens */
 }
 
 #new-quest {
-    width: 80%;
+    width: 100%;
+    max-width: 200px; /* Limit button width on larger screens */
+    margin: 20px auto 0; /* Center horizontally and add top margin */
 }
 
 /* Stats Section */
@@ -323,16 +328,20 @@ footer {
 
     .quest-buttons {
         flex-direction: column;
-        gap: 8px;
+        gap: 12px;
+        align-items: center;
+        width: 100%;
     }
 
     .quest-buttons button {
         width: 100%;
+        max-width: 180px; /* Slightly smaller on mobile */
     }
 
     #new-quest {
         width: 100%;
-        margin-top: 10px;
+        max-width: 180px; /* Slightly smaller on mobile */
+        margin: 15px auto 0; /* Center horizontally and add top margin */
     }
 
     .stats-grid {
@@ -370,6 +379,19 @@ footer {
             padding-left: max(15px, env(safe-area-inset-left));
             padding-right: max(15px, env(safe-area-inset-right));
         }
+    }
+
+    /* Center all buttons in the app */
+    .btn {
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Center theme items */
+    .theme-item {
+        margin: 0 auto;
     }
 }
 
