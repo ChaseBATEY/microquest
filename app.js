@@ -38,7 +38,11 @@ function setTheme(theme) {
     
     // Update toggle button icon
     const icon = themeToggle.querySelector('i');
-    icon.className = theme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
+    if (theme === 'dark') {
+        icon.className = 'fas fa-moon';
+    } else {
+        icon.className = 'fas fa-sun';
+    }
 }
 
 // Function to initialize theme
@@ -67,6 +71,7 @@ themeToggle.addEventListener('click', () => {
         themeToggle.classList.remove('rotating');
     }, 500);
     
+    // Toggle theme
     setTheme(currentTheme === 'dark' ? 'light' : 'dark');
 });
 
