@@ -69,7 +69,17 @@ const QUESTS = {
         "Create a tiny obstacle course for your finger to navigate.",
         "Find three items that could be used as improvised tools.",
         "Send someone directions to an imaginary treasure hidden in your home.",
-        "Discover something that makes an interesting sound when tapped."
+        "Discover something that makes an interesting sound when tapped.",
+        "Find a pattern in nature and document it with a photo or drawing.",
+        "Create a time capsule using items that represent your current life.",
+        "Find the highest point you can safely reach and observe from there.",
+        "Discover a new route to a familiar destination.",
+        "Find three different types of leaves and compare their shapes.",
+        "Create a map of your favorite places in your current location.",
+        "Find something that's been lost for a while and return it to its proper place.",
+        "Discover a new use for an everyday object.",
+        "Find the most interesting texture in your environment and describe it.",
+        "Create a scavenger hunt for someone else using items in your space."
     ],
     
     wizard: [
@@ -87,7 +97,17 @@ const QUESTS = {
         "Concoct a magic 'elixir' (a special drink) and describe its supernatural effects.",
         "Create a 'crystal ball' from something transparent and use it to 'divine' tomorrow's activities.",
         "Design a wand using materials you have available.",
-        "Write down a 'transformation spell' that would change you into an animal of your choice."
+        "Write down a 'transformation spell' that would change you into an animal of your choice.",
+        "Create a 'magical recipe' that combines three unlikely ingredients.",
+        "Design a magical creature using household items.",
+        "Write a spell that would solve a common problem in your life.",
+        "Create a 'magical protection' for your personal space.",
+        "Find five objects that could be magical artifacts and give them powers.",
+        "Write a magical diary entry about your day.",
+        "Create a 'magical weather' effect using household items.",
+        "Design a magical transportation device from everyday objects.",
+        "Write a spell to make someone smile.",
+        "Create a 'magical library' by organizing books in a special way."
     ],
     
     warrior: [
@@ -105,7 +125,17 @@ const QUESTS = {
         "Make a strategic plan for accomplishing a goal with three specific steps.",
         "Identify a 'dragon' (problem) in your life and write down one way to defeat it.",
         "Challenge yourself to perfect stillness for 1 minute - a warrior's focus.",
-        "Write a victory speech for a battle you've recently won in your life."
+        "Write a victory speech for a battle you've recently won in your life.",
+        "Create a 'battle plan' for a personal goal you want to achieve.",
+        "Find three objects that could be used as improvised weapons (safely).",
+        "Write a warrior's oath that you'll follow for the day.",
+        "Create a 'training routine' using household items.",
+        "Find your 'armor' - something that makes you feel strong.",
+        "Design a warrior's crest using symbols that represent your values.",
+        "Create a 'battle cry' that motivates you to action.",
+        "Find a 'battlefield' (challenge) and plan your strategy.",
+        "Write a letter to your future self about your current battles.",
+        "Create a 'victory ritual' for when you accomplish something difficult."
     ],
     
     trickster: [
@@ -123,7 +153,17 @@ const QUESTS = {
         "Find a way to harmlessly prank yourself.",
         "Intentionally mispronounce a common word all day and see if anyone corrects you.",
         "Create a trap (harmless) out of household items.",
-        "Assign a fake holiday to today and celebrate it as genuinely as possible."
+        "Assign a fake holiday to today and celebrate it as genuinely as possible.",
+        "Create a 'fake news' story about something mundane in your life.",
+        "Invent a new word and use it convincingly in conversation.",
+        "Create a 'mystery box' with unexpected contents.",
+        "Write a riddle that leads to a hidden object.",
+        "Create a 'fake treasure map' with clues.",
+        "Invent a new holiday and celebrate it with others.",
+        "Create a 'mysterious package' with a story attached.",
+        "Write a fake diary entry from an inanimate object.",
+        "Create a 'conspiracy theory' about something ordinary.",
+        "Design a 'fake advertisement' for an everyday object."
     ],
     
     bard: [
@@ -141,7 +181,17 @@ const QUESTS = {
         "Make up new lyrics to a familiar tune about your day.",
         "Narrate your actions in third person for 5 minutes, as dramatically as possible.",
         "Create a rhyming couplet about each room in your home.",
-        "Find percussion in unexpected places - create music from everyday sounds."
+        "Find percussion in unexpected places - create music from everyday sounds.",
+        "Create a 'soundscape' using only objects in your room.",
+        "Write a ballad about an everyday object.",
+        "Create a 'theme song' for your day.",
+        "Compose a 'musical story' using only sounds.",
+        "Write a limerick about your current situation.",
+        "Create a 'sound poem' using only onomatopoeia.",
+        "Design a 'musical instrument' from household items.",
+        "Write a 'rap' about your daily routine.",
+        "Create a 'sound collage' of your environment.",
+        "Write a 'musical recipe' for your favorite food."
     ]
 };
 

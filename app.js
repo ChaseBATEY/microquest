@@ -96,6 +96,10 @@ function initApp() {
     elements.currentThemeIcon.className = '';
     elements.currentThemeIcon.classList.add('fas', currentTheme.icon);
     
+    // Set initial quest theme data attribute
+    const questContainer = document.querySelector('.quest-container');
+    questContainer.setAttribute('data-quest-theme', state.currentTheme);
+    
     renderStats();
     renderThemeSelector();
     generateNewQuest();
@@ -214,6 +218,10 @@ function changeTheme(themeId) {
         // Update theme icon
         elements.currentThemeIcon.className = '';
         elements.currentThemeIcon.classList.add('fas', newTheme.icon);
+        
+        // Update quest theme data attribute
+        const questContainer = document.querySelector('.quest-container');
+        questContainer.setAttribute('data-quest-theme', themeId);
         
         // Update active theme in selector
         const themeItems = document.querySelectorAll('.theme-item');
