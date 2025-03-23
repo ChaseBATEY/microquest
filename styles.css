@@ -146,7 +146,6 @@ h2 {
     position: relative;
     box-shadow: 0 8px 15px var(--shadow);
     border: 2px solid var(--primary-light);
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .quest-card::before {
@@ -179,13 +178,13 @@ h2 {
 
 .quest-buttons button {
     flex: 1;
-    max-width: 200px; /* Limit button width on larger screens */
+    max-width: 200px;
 }
 
 #new-quest {
     width: 100%;
-    max-width: 200px; /* Limit button width on larger screens */
-    margin: 20px auto 0; /* Center horizontally and add top margin */
+    max-width: 200px;
+    margin: 20px auto 0;
 }
 
 /* Stats Section */
@@ -256,38 +255,41 @@ h2 {
 }
 
 .theme-item i {
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: var(--primary);
     margin-bottom: 8px;
 }
 
+.theme-item span {
+    font-size: 0.9rem;
+    color: var(--dark);
+    text-align: center;
+}
+
 .theme-item.locked {
-    opacity: 0.5;
+    opacity: 0.7;
     cursor: not-allowed;
+    background-color: #f5f5f5;
 }
 
 .theme-item.locked i {
-    color: var(--dark);
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    margin-top: 20px;
-    padding: 10px;
-    color: var(--dark);
-    font-size: 0.9rem;
+    color: #999;
 }
 
 /* Animations */
-@keyframes pop {
-    0% { transform: scale(0.8); opacity: 0; }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); opacity: 1; }
+@keyframes pop-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .pop-in {
-    animation: pop 0.5s ease-in-out forwards;
+    animation: pop-in 0.3s ease-out forwards;
 }
 
 /* Media Queries */
@@ -321,9 +323,9 @@ footer {
     }
 
     .btn {
-        padding: 12px 20px; /* Larger touch targets */
+        padding: 12px 20px;
         font-size: 1rem;
-        min-height: 44px; /* Minimum touch target size */
+        min-height: 44px;
     }
 
     .quest-buttons {
@@ -335,13 +337,13 @@ footer {
 
     .quest-buttons button {
         width: 100%;
-        max-width: 180px; /* Slightly smaller on mobile */
+        max-width: 180px;
     }
 
     #new-quest {
         width: 100%;
-        max-width: 180px; /* Slightly smaller on mobile */
-        margin: 15px auto 0; /* Center horizontally and add top margin */
+        max-width: 180px;
+        margin: 15px auto 0;
     }
 
     .stats-grid {
@@ -361,56 +363,6 @@ footer {
     .theme-item i {
         font-size: 1.5rem;
     }
-
-    /* Add touch feedback */
-    .btn:active,
-    .theme-item:active {
-        transform: scale(0.98);
-    }
-
-    /* Improve scrolling */
-    .app-container {
-        -webkit-overflow-scrolling: touch;
-    }
-
-    /* Add safe area insets for modern mobile devices */
-    @supports (padding: max(0px)) {
-        body {
-            padding-left: max(15px, env(safe-area-inset-left));
-            padding-right: max(15px, env(safe-area-inset-right));
-        }
-    }
-
-    /* Center all buttons in the app */
-    .btn {
-        margin: 0 auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    /* Center theme items */
-    .theme-item {
-        margin: 0 auto;
-    }
-}
-
-/* Add smooth transitions for all interactive elements */
-.btn,
-.theme-item,
-.quest-card {
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Improve touch feedback */
-.btn:active,
-.theme-item:active {
-    transform: scale(0.98);
-}
-
-/* Add pull-to-refresh visual feedback */
-.quest-container {
-    overscroll-behavior: contain;
 }
 
 /* Optimize for landscape mode */
@@ -436,94 +388,4 @@ footer {
     .themes-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-}
-
-/* Header Styles */
-.header-content {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding-top: 10px; /* Add some padding for the theme toggle */
-}
-
-.theme-toggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    color: var(--primary);
-    font-size: 1.5rem;
-    transition: transform 0.3s ease;
-    z-index: 100; /* Ensure it's above other elements */
-    width: 44px; /* Minimum touch target size */
-    height: 44px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    background-color: var(--light);
-    box-shadow: 0 2px 5px var(--shadow);
-}
-
-.theme-toggle:hover {
-    transform: rotate(15deg);
-    background-color: var(--paper);
-}
-
-.theme-toggle:active {
-    transform: scale(0.95);
-}
-
-.theme-toggle i {
-    transition: transform 0.3s ease;
-}
-
-/* Add rotation animation for theme toggle */
-.theme-toggle.rotating i {
-    animation: rotate360 0.5s ease-in-out;
-}
-
-@keyframes rotate360 {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Dark Mode Styles */
-[data-theme="dark"] {
-    --light: #2a2a2a;
-    --dark: #f5f5f5;
-    --paper: #1a1a1a;
-    --shadow: rgba(0, 0, 0, 0.3);
-}
-
-[data-theme="dark"] body {
-    background-color: #121212;
-    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23272727' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-}
-
-[data-theme="dark"] .stats-container,
-[data-theme="dark"] .themes-container {
-    background-color: #1e1e1e;
-}
-
-[data-theme="dark"] .theme-toggle {
-    background-color: var(--paper);
-    color: var(--primary-light);
-}
-
-[data-theme="dark"] .theme-toggle:hover {
-    background-color: var(--light);
-}
-
-/* Remove the old dark mode media query */
-@media (prefers-color-scheme: dark) {
-    /* This will be handled by our new theme system */
 } 
