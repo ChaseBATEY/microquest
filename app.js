@@ -11,7 +11,21 @@ const state = {
     currentQuest: null,
     lastCompletedQuests: [],
     unlockedThemes: ['explorer'], // Starting with Explorer theme
+    coins: 0,
+    experience: 0,
+    level: 1
 };
+
+// Constants
+const THEMES = [
+    { id: 'explorer', name: 'Explorer', icon: 'fa-compass', requiredQuests: 0 },
+    { id: 'wizard', name: 'Wizard', icon: 'fa-hat-wizard', requiredQuests: 5 },
+    { id: 'warrior', name: 'Warrior', icon: 'fa-shield-alt', requiredQuests: 10 },
+    { id: 'trickster', name: 'Trickster', icon: 'fa-theater-masks', requiredQuests: 15 },
+    { id: 'bard', name: 'Bard', icon: 'fa-music', requiredQuests: 20 }
+];
+
+const EXP_PER_LEVEL = 20; // Experience needed to level up
 
 // DOM Elements
 const elements = {
@@ -25,6 +39,12 @@ const elements = {
     failedCount: document.getElementById('failed-count'),
     themesUnlocked: document.getElementById('themes-unlocked'),
     themesGrid: document.getElementById('themes-grid'),
+    completedQuestsDisplay: document.getElementById('completed-quests'),
+    failedQuestsDisplay: document.getElementById('failed-quests'),
+    coinsDisplay: document.getElementById('coins'),
+    levelDisplay: document.getElementById('level'),
+    experienceDisplay: document.getElementById('experience'),
+    experienceBar: document.getElementById('experience-bar')
 };
 
 // Theme Management
@@ -151,43 +171,27 @@ function generateNewQuest() {
 
 // Handle quest completion
 function handleQuestCompleted() {
-    if (!state.currentQuest) return;
-    
-    // Update stats
     state.completedQuests++;
+    state.experience += 5;
+    state.coins += 1;
     
-    // Keep track of recent quests to avoid repetition
-    state.lastCompletedQuests.push(state.currentQuest);
-    if (state.lastCompletedQuests.length > 5) {
-        state.lastCompletedQuests.shift();
+    // Check for level up
+    while (state.experience >= EXP_PER_LEVEL) {
+        state.experience -= EXP_PER_LEVEL;
+        state.level++;
     }
     
-    // Check if new themes are unlocked
-    checkThemeUnlocks();
-    
-    // Update UI
     renderStats();
-    saveStateToStorage();
     generateNewQuest();
-    
-    // Show success feedback
-    showFeedback('Quest completed! +1 XP', 'success');
+    saveStateToStorage();
 }
 
 // Handle quest failure
 function handleQuestFailed() {
-    if (!state.currentQuest) return;
-    
-    // Update stats
     state.failedQuests++;
-    
-    // Update UI
     renderStats();
-    saveStateToStorage();
     generateNewQuest();
-    
-    // Show failure feedback
-    showFeedback('Quest failed! Try again.', 'danger');
+    saveStateToStorage();
 }
 
 // Check if any themes should be unlocked
@@ -279,8 +283,18 @@ function renderThemeSelector() {
 
 // Render stats in the UI
 function renderStats() {
-    elements.completedCount.textContent = state.completedQuests;
-    elements.failedCount.textContent = state.failedQuests;
+    elements.completedQuestsDisplay.textContent = state.completedQuests;
+    elements.failedQuestsDisplay.textContent = state.failedQuests;
+    elements.coinsDisplay.textContent = state.coins;
+    elements.levelDisplay.textContent = state.level;
+    elements.experienceDisplay.textContent = `${state.experience}/${EXP_PER_LEVEL}`;
+    
+    // Update progress bar
+    const progress = (state.experience / EXP_PER_LEVEL) * 100;
+    elements.experienceBar.style.width = `${progress}%`;
+    
+    // Check for unlockable themes
+    checkThemeUnlocks();
 }
 
 // Show feedback message
