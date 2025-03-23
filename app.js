@@ -43,12 +43,6 @@ function setTheme(theme) {
     } else {
         icon.className = 'fas fa-sun';
     }
-
-    // Update theme name display
-    const themeNameElement = document.getElementById('theme-name');
-    if (themeNameElement) {
-        themeNameElement.textContent = theme.charAt(0).toUpperCase() + theme.slice(1);
-    }
 }
 
 // Function to initialize theme
@@ -95,6 +89,13 @@ initializeTheme();
 // Initialize app
 function initApp() {
     loadStateFromStorage();
+    
+    // Set initial theme display
+    const currentTheme = THEMES.find(theme => theme.id === state.currentTheme);
+    elements.themeNameDisplay.textContent = currentTheme.name;
+    elements.currentThemeIcon.className = '';
+    elements.currentThemeIcon.classList.add('fas', currentTheme.icon);
+    
     renderStats();
     renderThemeSelector();
     generateNewQuest();
